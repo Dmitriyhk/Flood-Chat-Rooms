@@ -11,7 +11,7 @@ app.get('/room', (req, res) => {
 });
 
 io.on('connection', socket => {
-  console.loog('user connected > ', socket)
+  console.log('user connected > ', socket.id)
 })
 
 server.listen(8888, (error) => {
