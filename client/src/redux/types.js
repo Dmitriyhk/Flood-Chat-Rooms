@@ -1,0 +1,1 @@
+export const PHOTO_LOAD = 'PHOTO_LOAD'
