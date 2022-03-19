@@ -18,6 +18,13 @@ app.post('/room', (req, res) => {
 });
 
 io.on('connection', socket => {
+  socket.on('USER:JOIN', ( { name, photo}) => {
+    // socket.join()
+    room.get('users').set(socket.id, {name, photo});
+    const users = [...room.get('users').values()];
+    socket.broadcast.emit('USER:JOINED', name);
+    console.log('rooom >', name)
+  })
   console.log('user connected > ', socket.id);
 });
 

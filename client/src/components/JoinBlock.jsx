@@ -3,6 +3,7 @@ import { useDispatch, useSelector} from 'react-redux'
 import { randomName } from '../nameGenerator'
 import { loaderOn, photoLoad } from '../redux/actions'
 import axios from "axios";
+import socket from '../socket';
 
 const JoinBlock = () => {
   const dispatch = useDispatch();
@@ -22,15 +23,20 @@ const JoinBlock = () => {
   });
  
 
-  function onEnter () {
+  async function onEnter () {
     const name = randomName();
-    axios.post('/room', {
+    dispatch(loaderOn());
+    await axios.post('/room', {
       name,
       photo
-    }).then(() => {
-      dispatch(loaderOn());
+    });
+    socket.emit('USER:JOIN', {
+      name,
+      photo
     });
   };
+
+  
   
   return (
     <div className='joinBlock'>
