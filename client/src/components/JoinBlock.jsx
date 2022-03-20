@@ -9,7 +9,9 @@ import { userReducer } from '../redux/userReducer';
 const JoinBlock = () => {
   const dispatch = useDispatch();
 
-  
+  const photo = useSelector(state => {
+    return state.photoReducer.photo;
+  });
 
 
   useEffect(() => {
@@ -17,11 +19,12 @@ const JoinBlock = () => {
     
   }, []);
 
-  
- 
-  const photo = useSelector(state => {
-    return state.photoReducer.photo;
-  });
+
+
+  if (!photo) {
+    dispatch(photoLoad());
+    console.log('huivloga', photo)
+  }
  
 
   async function onEnter () {

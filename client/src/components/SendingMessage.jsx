@@ -22,8 +22,14 @@ const SendingMessage = () => {
       reader.readAsDataURL(file)
       reader.onload = () => {
         setImageBase64(reader.result)
+        
       }
     }
+  }
+
+  const handleDeleteImage = () => {
+    setImageInput('')
+    setImageBase64('')
   }
 
   const onSendMessage = async () => {
@@ -53,7 +59,7 @@ const SendingMessage = () => {
           onChange={(e) => setMessageValue(e.target.value)} className='sendingMessage-form__input'/>
         <div  className='sendingMessage-form__control'>
           <label className='sendingMessage-form__fileUpload'>
-            <input value={imageInput} onChange={handleImageChange} type="file"/>
+            <input className='fileUpload-input' value={imageInput} onChange={handleImageChange} type="file"/>
             Custom Upload
           </label>
           <button  
@@ -61,9 +67,9 @@ const SendingMessage = () => {
           >
             Отправить
           </button>
+          
         </div>
-        
-        
+        {imageBase64 && <div className='fileUpload'><img className='fileUpload-img'  src={imageBase64}/><div onClick={handleDeleteImage} className='fileUpload-img__delete'>&times;</div></div>}
       </form>
       </div>
   )
