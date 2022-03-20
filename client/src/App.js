@@ -9,7 +9,8 @@ const App = () => {
 
   useEffect(() => {
     socket.on('USER:JOINED', name => {
-      console.log( 'Пользователь ' + name + ' зашёл к нам!')
+      console.log(name)
+      console.log( 'Пользователь ' + name[name.length - 1].name + ' зашёл к нам!')
     })
   }, [])
 

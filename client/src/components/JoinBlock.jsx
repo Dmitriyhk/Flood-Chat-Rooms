@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 import { randomName } from '../nameGenerator'
-import { loaderOn, photoLoad } from '../redux/actions'
+import { loaderOn, photoLoad, userJoin } from '../redux/actions'
 import axios from "axios";
 import socket from '../socket';
+import { userReducer } from '../redux/userReducer';
 
 const JoinBlock = () => {
   const dispatch = useDispatch();
@@ -26,14 +27,15 @@ const JoinBlock = () => {
   async function onEnter () {
     const name = randomName();
     dispatch(loaderOn());
-    await axios.post('/room', {
-      name,
-      photo
-    });
+    // await axios.post('/room', {
+    //   name,
+    //   photo
+    // });
     socket.emit('USER:JOIN', {
       name,
       photo
-    });
+    })
+    dispatch(userJoin(name, photo))
   };
 
   
