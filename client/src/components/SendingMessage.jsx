@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { newMessage } from '../redux/actions';
 import socket from '../socket';
@@ -8,10 +8,18 @@ const SendingMessage = () => {
   const [messageValue, setMessageValue] = useState('');
   const [imageInput, setImageInput] = useState('');
   const [imageBase64, setImageBase64] = useState('');
+  const [disabldedButton, setDisabledButton] = useState(true)
   const userName = useSelector(state => state.userReducer.name);
   const userPhoto = useSelector(state => state.userReducer.photo);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (imageInput || messageValue) {
+      setDisabledButton(false)
+    } else {
+      setDisabledButton(true)
+    }
+  }, [imageInput, messageValue])
 
   const handleImageChange = (e) => {
     setImageInput(e.target.value)
@@ -39,8 +47,7 @@ const SendingMessage = () => {
       text: messageValue,
       img: imageBase64
     });
-    const arr = [userName, userPhoto, messageValue, imageBase64]
-    dispatch(newMessage(arr))
+    dispatch(newMessage(userName, userPhoto, messageValue, imageBase64))
     setMessageValue('')
     setImageInput('')
     setImageBase64('')
@@ -56,7 +63,7 @@ const SendingMessage = () => {
             <input className='fileUpload-input' value={imageInput} onChange={handleImageChange} type="file"/>
             Custom Upload
           </label>
-          <button  
+          <button  disabled={disabldedButton}
             onClick={onSendMessage} className='sendingMessage-form__btn' type='button'
           >
             Отправить

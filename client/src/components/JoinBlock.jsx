@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { randomName } from "../nameGenerator";
-import { loaderOn, photoLoad, setUsers, userJoin, userLoad } from "../redux/actions";
+import { loaderOn, messagesLoad, photoLoad, setUsers, userJoin, userLoad } from "../redux/actions";
 import axios from "axios";
 import socket from "../socket";
 import { userReducer } from "../redux/userReducer";
@@ -30,6 +30,7 @@ const JoinBlock = () => {
     socket.emit("USER:JOIN", userObj);
     const { data } = await axios.get('/room');
     dispatch(userLoad(data.users))
+    dispatch(messagesLoad(data.messages))
     console.log('THIS IS DATA >', data)
 
   }

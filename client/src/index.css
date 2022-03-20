@@ -143,6 +143,53 @@ code {
   background: rgba(226,148,160,0.4);
 }
 
+.messages {
+}
+
+.message {
+  background: rgba(55, 0, 255, 0.4);
+  border-radius: 20px;
+  margin: 20px;
+  width: calc(50% - 20px);
+}
+
+.my-message {
+  background: rgba(255, 0, 234, 0.4);
+  border-radius: 20px;
+  margin: 20px 20px 20px 50%;
+  width: calc(50% - 20px);
+}
+
+
+.message-user {
+  margin-left: 20px;
+display: flex;
+}
+
+.message-user__photo {
+  margin-top: 10px;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+}
+
+.message-user__name {
+  margin-top: 15px;
+margin-left: 5px;
+}
+
+.message-content {
+margin: 10px;
+}
+
+.message-content__text {
+  word-wrap: break-word;
+}
+
+.message-content__img {
+  max-width: 100%;
+}
+
 .chat-sendingMessage {
   position: absolute;
   height: 20%;

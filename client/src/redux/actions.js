@@ -1,4 +1,4 @@
-import { ERROR_DISPLAY_OFF, ERROR_DISPLAY_ON, JOINED, LOADER_DISPLAY_OFF, LOADER_DISPLAY_ON, NEW_MESSAGE, PHOTO_LOAD, USERS_LOAD, USER_JOIN, USER_LEAVE } from "./types";
+import { ERROR_DISPLAY_OFF, ERROR_DISPLAY_ON, JOINED, LOADER_DISPLAY_OFF, LOADER_DISPLAY_ON, MESSAGES_LOAD, NEW_MESSAGE, PHOTO_LOAD, USERS_LOAD, USER_JOIN, USER_LEAVE } from "./types";
 
 
 export function photoLoad() {
@@ -44,6 +44,12 @@ export function userLoad(users) {
   return {
     type: USERS_LOAD,
     users
+  };
+};
+export function messagesLoad(messages) {
+  return {
+    type: MESSAGES_LOAD,
+    messages
   };
 };
 

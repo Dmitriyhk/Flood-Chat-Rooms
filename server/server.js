@@ -40,8 +40,6 @@ io.on("connect", (socket) => {
     };
     room.get("messages").push(obj);
     socket.broadcast.emit("ROOM:NEW_MESSAGE", obj);
-    const messages = [...room.get("messages").values()];
-    socket.emit("ROOM:MESSAGES", messages);
   });
 
   socket.on("disconnect", () => {
