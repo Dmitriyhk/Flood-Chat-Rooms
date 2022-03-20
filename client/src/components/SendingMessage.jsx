@@ -39,14 +39,8 @@ const SendingMessage = () => {
       text: messageValue,
       img: imageBase64
     });
-    // await axios.post('/room', {
-    //   userName,
-    //   userPhoto,
-    //   text: messageValue,
-    //   img: imageBase64
-    // } )
-    console.log(imageBase64)
-    dispatch(newMessage(userName, userPhoto, messageValue, imageBase64))
+    const arr = [userName, userPhoto, messageValue, imageBase64]
+    dispatch(newMessage(arr))
     setMessageValue('')
     setImageInput('')
     setImageBase64('')

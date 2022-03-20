@@ -1,18 +1,18 @@
-import { ERROR_DISPLAY_OFF, ERROR_DISPLAY_ON, JOINED, LOADER_DISPLAY_OFF, LOADER_DISPLAY_ON, NEW_MESSAGE, PHOTO_LOAD, USER_JOIN, USER_LEAVE } from "./types";
+import { ERROR_DISPLAY_OFF, ERROR_DISPLAY_ON, JOINED, LOADER_DISPLAY_OFF, LOADER_DISPLAY_ON, NEW_MESSAGE, PHOTO_LOAD, USERS_LOAD, USER_JOIN, USER_LEAVE } from "./types";
 
 
 export function photoLoad() {
   return async dispatch => {
+    // Иногда приходит пустой 
     let data
     while (!data || !data.url) {
       const response = await fetch('https://picsum.photos/150');
       data = await response;
-      console.log('ebatvswxluseu >', data.url)
-      dispatch({
-        type: PHOTO_LOAD,
-        data: data
-      });
     }
+    dispatch({
+      type: PHOTO_LOAD,
+      data: data
+    });
   };
 };
 
@@ -38,6 +38,12 @@ export function errorOff() {
 export function loaderOff() {
   return {
     type: LOADER_DISPLAY_OFF
+  };
+};
+export function userLoad(users) {
+  return {
+    type: USERS_LOAD,
+    users
   };
 };
 

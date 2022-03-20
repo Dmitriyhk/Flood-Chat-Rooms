@@ -133,6 +133,8 @@ code {
 
 
 .chat-messages {
+  overflow: auto;
+  color: black;
   position: absolute;
   height: 70%;
   width: 75%;

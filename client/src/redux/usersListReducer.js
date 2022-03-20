@@ -5,15 +5,13 @@ const initialState = {
 };
 
 export const usersListReducer = (state = initialState, action) => {
+  console.log('ТУТ У НАС ПРОВЕРКА ЮЗЕР ЛИСТ >>', action.users)
   switch(action.type) {
     case USERS_LOAD:
-      const usersNew = action.data.map(user => {
         return {
-          name: user.name,
-          id: user.id,
-          photo: user.photo
+          ...state,
+          users: action.users
         }
-      })
     default:
       return state;
   };

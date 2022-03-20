@@ -6,12 +6,12 @@ const Header = () => {
   const userName = useSelector(state => state.userReducer.name);
   const userPhoto = useSelector(state => state.userReducer.photo);
   
-  useEffect(() => {
-    socket.on('USER:JOINED', name => {
-      console.log(name)
-      console.log( 'Пользователь ' + name[name.length - 1].name + ' зашёл к нам!')
-    })
-  }, [])
+  // useEffect(() => {
+  //   socket.on('USER:JOINED', name => {
+  //     console.log(name)
+  //     console.log( 'Пользователь ' + name[name.length - 1].name + ' зашёл к нам!')
+  //   })
+  // }, [])
   return (
     <div className='chat-header'>
       <img className='chat-header__img' src={userPhoto} />

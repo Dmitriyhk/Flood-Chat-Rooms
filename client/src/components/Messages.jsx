@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import socket from '../socket'
@@ -5,7 +6,23 @@ import socket from '../socket'
 const Messages = () => {
   const messagesRef = useRef(null)
   const [messages, setMessage] = useState([])
-  console.log('afasfsaebat')
+
+  useEffect(() => {
+    testing()
+    console.log('testing))#)')
+  }, [])
+
+  const testing = async () => {
+    const { data }  = await axios.get('/room')
+    setMessage(data)
+    console.log('data',  data )
+  }
+ 
+
+  // socket.on('ROOM:MESSAGES', arrMes => {
+  //   setMessage(arrMes)
+  // })
+  console.log('messages >', messages)
 
   const meska = useSelector(state => state.messagesReducer)
   console.log('meska', meska);
@@ -27,7 +44,7 @@ const Messages = () => {
               </div>
             </div>
           ))}
-        </div>
+      </div>
     </div>
   )
 }

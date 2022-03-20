@@ -9,7 +9,7 @@ const Chat = () => {
     <div className='chat'>
       <Header/>
       <UserList/>
-      <Messages/>
+      {/* <Messages/> */}
       <SendingMessage/>
     </div>
   )
