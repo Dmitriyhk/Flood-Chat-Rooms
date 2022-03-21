@@ -24,11 +24,15 @@ const App = () => {
   const test = useSelector(state => {
     return state.appReducer.loading;
   });
+
+  const test1 = useSelector(state => {
+    return state.appReducer.join;
+  });
   console.log('test >', test)
   return (
     <div>
-      {/* <Spin /> */}
-      {!test ? <JoinBlock /> : <Chat />}
+      {test ? <Spin /> : test1 ?<Chat /> : <JoinBlock />}
+      
     </div>
   )
 } 

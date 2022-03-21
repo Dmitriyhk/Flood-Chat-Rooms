@@ -60,14 +60,18 @@ const SendingMessage = () => {
           onChange={(e) => setMessageValue(e.target.value)} className='sendingMessage-form__input'/>
         <div  className='sendingMessage-form__control'>
           <label className='sendingMessage-form__fileUpload'>
+            <img className='fileUpload-img' src='send_photo.png'/>
             <input className='fileUpload-input' value={imageInput} onChange={handleImageChange} type="file"/>
-            Custom Upload
           </label>
+          <label className='sendingMessage-form__fileUpload'>
+          <img className='fileUpload-img' src='send_message.png'/>
           <button  disabled={disabldedButton}
             onClick={onSendMessage} className='sendingMessage-form__btn' type='button'
           >
-            Отправить
+            
           </button>
+          </label>
+          
           
         </div>
         {imageBase64 && <div className='fileUpload'><img className='fileUpload-img'  src={imageBase64}/><div onClick={handleDeleteImage} className='fileUpload-img__delete'>&times;</div></div>}

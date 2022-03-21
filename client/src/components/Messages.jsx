@@ -44,8 +44,9 @@ const Messages = () => {
               <img className="message-user__photo" src={message.userPhoto} /> <p className="message-user__name">{message.userName}</p>
             </div>
             <div className="message-content">
+            <p className="message-content__text">{message.text}</p>
               {message.img && <img onClick={imageHandler} className="message-content__img" src={message.img} />}
-              <p className="message-content__text">{message.text}</p>
+              
             </div>
           </div>
         ))}
