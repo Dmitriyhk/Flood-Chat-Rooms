@@ -9,14 +9,7 @@ const io = require("socket.io")(server, {
   pingInterval: 3000,
 });
 
-app.use(express.static(__dirname));
- app.use(express.static(path.join(__dirname, '../client/build')));
-
-app.use(express.json(path.join(__dirname, '../client/build')));
-
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build', '/index.html'));
-});
+app.use(express.static(__dirname + '../client/build'))
 
 const room = new Map([
   ["users", new Map()],
@@ -61,9 +54,4 @@ io.on("connect", (socket) => {
   });
 });
 
-server.listen(8888, (error) => {
-  if (error) {
-    throw Error(error);
-  }
-  console.log("Сервер запущен!");
-});
+server.listen(port, () => console.log('work'))
