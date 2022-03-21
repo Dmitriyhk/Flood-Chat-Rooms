@@ -9,5 +9,5 @@ export const rootReducer = combineReducers({
   appReducer,
   userReducer,
   usersListReducer,
-  messagesReducer
-})
+  messagesReducer,
+});

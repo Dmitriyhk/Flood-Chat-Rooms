@@ -1,6 +1,4 @@
 import {
-  ERROR_DISPLAY_OFF,
-  ERROR_DISPLAY_ON,
   JOINED,
   LOADER_DISPLAY_OFF,
   LOADER_DISPLAY_ON,
@@ -10,12 +8,10 @@ import {
 const initialState = {
   loading: false,
   error: null,
-  join: false
+  join: false,
 };
 
 export const appReducer = (state = initialState, action) => {
-  console.log("input text Reducer >", action);
-
   switch (action.type) {
     case LOADER_DISPLAY_ON:
       return {
@@ -39,18 +35,6 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         join: false,
-      };
-
-    case ERROR_DISPLAY_ON:
-      return {
-        ...state,
-        error: action.text,
-      };
-
-    case ERROR_DISPLAY_OFF:
-      return {
-        ...state,
-        error: null,
       };
 
     default:

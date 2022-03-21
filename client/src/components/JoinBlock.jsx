@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { randomName } from "../nameGenerator";
-import { joined, loaderOff, loaderOn, messagesLoad, photoLoad, setUsers, userJoin, userLoad } from "../redux/actions";
+import {
+  joined,
+  loaderOff,
+  loaderOn,
+  messagesLoad,
+  photoLoad,
+  userJoin,
+  userLoad,
+} from "../redux/actions";
 import axios from "axios";
 import socket from "../socket";
-import { userReducer } from "../redux/userReducer";
 
 const JoinBlock = () => {
   const dispatch = useDispatch();
-
-  const [messages, setMessage] = useState([]);
 
   const photo = useSelector((state) => {
     return state.photoReducer.photo;
@@ -24,15 +29,15 @@ const JoinBlock = () => {
     const name = randomName();
     const userObj = {
       name,
-      photo
-    }
+      photo,
+    };
     dispatch(userJoin(name, photo));
     socket.emit("USER:JOIN", userObj);
-    const { data } = await axios.get('/room');
-    dispatch(userLoad(data.users))
-    dispatch(messagesLoad(data.messages))
-    dispatch(loaderOff())
-    dispatch(joined())
+    const { data } = await axios.get("/room");
+    dispatch(userLoad(data.users));
+    dispatch(messagesLoad(data.messages));
+    dispatch(loaderOff());
+    dispatch(joined());
   }
 
   return (

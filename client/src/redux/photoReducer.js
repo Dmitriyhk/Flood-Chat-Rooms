@@ -1,20 +1,17 @@
 import { PHOTO_LOAD } from "./types";
 
 const initialState = {
-  photo: ''
-}
+  photo: "",
+};
 
 export const photoReducer = (state = initialState, action) => {
-  console.log('photo Reducer >', action);
-
-  switch(action.type) {
+  switch (action.type) {
     case PHOTO_LOAD:
       return {
         ...state,
-        photo: action.data.url
-
-      }
-  default:
-    return state
+        photo: action.data.url,
+      };
+    default:
+      return state;
   }
-}
+};
